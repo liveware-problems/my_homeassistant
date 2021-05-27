@@ -1,0 +1,590 @@
+# dwains_theme
+# Portainer docker page
+# Made by Ruben Dijk.
+# version : 1.0.0
+
+- type: custom:vertical-stack-in-card
+  style: |
+    ha-card {
+        background-color: var(--ha-card-background);
+        font-family: var(--primary-font-family);
+        border-radius: 5px;
+        box-shadow: none !important;
+      }
+  cards:
+    - type: custom:dwains-flexbox-card
+      items_classes: 'col-xs-12 col-sm-6 col-lg-6 col-xl-6'
+      cards:
+        - type: horizontal-stack
+          cards:
+        # - type: vertical-stack
+        #   cards:
+            - type: gauge
+              style: |
+                ha-card {
+                  background: none !important;
+                  box-shadow: none !important;
+                  font-family: var(--primary-font-family);
+                  border-radius: 5px;
+                }
+              entity: sensor.cpu_temp
+              min: 0
+              max: 80
+              severity:
+                green: 0
+                yellow: 50
+                red: 70
+            
+            - type: gauge
+              style: |
+                ha-card {
+                  background: none !important;
+                  box-shadow: none !important;
+                  font-family: var(--primary-font-family);
+                  border-radius: 5px;
+                }
+              entity: sensor.ssd_temp
+              min: 0
+              max: 80
+              severity:
+                green: 0
+                yellow: 50
+                red: 70
+
+            - type: gauge
+              style: |
+                ha-card {
+                  background: none !important;
+                  box-shadow: none !important;
+                  font-family: var(--primary-font-family);
+                  border-radius: 5px;
+                }
+              entity: sensor.hdd_temp
+              min: 0
+              max: 80
+              severity:
+                green: 0
+                yellow: 50
+                red: 70
+      
+        - type: vertical-stack
+          cards:
+            - type: entities
+              style: |
+                ha-card {
+                background: none !important;
+                box-shadow: none !important;
+                font-family: var(--primary-font-family);
+                border-radius: 5px;
+                }
+                :host {
+                  --paper-item-icon-color: var(--accent-color) !important;
+                }
+                ha-icon {
+                  margin-top: -7px !important;
+                  color: var(--accent-color) !important;
+                }
+                .card-content div {
+                    margin: 0 !important;
+                }
+                #states {
+                  padding-top: 5px !important;
+                  padding-bottom: 0px !important;
+                  align: left;
+                }
+                .secondary {
+                  color: darkgray !important;
+                  margin-left: 2px !important;
+                }
+
+              #   #states { padding-top: 0px; padding-bottom: 0px }
+              entities:
+                - type: custom:bar-card
+                  name: 'CPU Total'
+                  entity: sensor.host_cpu_use
+                  color: var(--accent-color) !important;
+                  entity_row: true
+                  width: 70%
+                  animation:
+                    state: on
+                  positions:
+                    name: outside
+                    value: outside
+                    icon: outside
+                    indicator: inside
+                  height: 15px
+                  icon: mdi:cpu-64-bit
+                  style: |
+                    ha-card {
+                      --paper-item-icon-color: rgb(47,186,229);
+                      border-radius: 10px;
+                      height: 40px;
+                    }
+                    ha-icon {
+                      margin-top: -7px;
+                      color: var(--accent-color) !important;
+                    }
+                    bar-card-indicator {
+                      margin-top: -12px;
+                      padding-right: 5px;
+                    }
+                    bar-card-name {
+                      margin-top: -4.5px;
+                      padding-left: 5px;
+                    }
+                    bar-card-backgroundbar {
+                      margin-top: -3.5px;
+                      border-radius: 10px;
+                    }
+                    bar-card-currentbar {
+                      margin-top: -3.5px;
+                      border-radius: 10px;
+                    }
+                    bar-card-targetbar {
+                      margin-top: -3.5px;
+                      border-radius: 10px;
+                    }
+                    bar-card-targetmarker {
+                      margin-top: -3.5px;
+                      border-radius: 10px;
+                    }
+                    bar-card-value {
+                      margin-top: -4.5px;
+                      padding-left: 5px;
+                    }
+                - type: custom:bar-card
+                  name: 'Memory Use Total'
+                  entity: sensor.host_ram_use
+                  color: var(--accent-color) !important;
+                  entity_row: true
+                  width: 70%
+                  animation:
+                    state: on
+                  positions:
+                    name: outside
+                    value: outside
+                    icon: outside
+                    indicator: inside
+                  height: 15px
+                  icon: mdi:memory
+                  style: |
+                    ha-card {
+                      --paper-item-icon-color: rgb(47,186,229);
+                      border-radius: 10px;
+                      height: 40px;
+                    }
+                    ha-icon	 {
+                      margin-top: -7px;
+                      color: var(--accent-color) !important;
+                    }
+                    bar-card-indicator	 {
+                      margin-top: -12px;
+                      padding-right: 5px;
+                    }
+                    bar-card-name	 {
+                      margin-top: -4.5px;
+                      padding-left: 5px;
+                    }
+                    bar-card-backgroundbar	 {
+                      margin-top: -3.5px;
+                      border-radius: 10px;
+                    }
+                    bar-card-currentbar	 {
+                      margin-top: -3.5px;
+                      border-radius: 10px;
+                    }
+                    bar-card-targetbar	 {
+                      margin-top: -3.5px;
+                      border-radius: 10px;
+                    }
+                    bar-card-targetmarker	 {
+                      margin-top: -3.5px;
+                      border-radius: 10px;
+                    }
+                    bar-card-value	 {
+                      margin-top: -4.5px;
+                      padding-left: 5px;
+                    }
+                - type: custom:bar-card
+                  name: 'Disk Use - LVM Thin'
+                  entity: sensor.host_lvm_thin_use
+                  color: var(--accent-color) !important;
+                  entity_row: true
+                  width: 70%
+                  animation:
+                    state: on
+                  positions:
+                    name: outside
+                    value: outside
+                    icon: outside
+                    indicator: inside
+                  height: 15px
+                  icon: mdi:harddisk
+                  style: |
+                    ha-card {
+                      --paper-item-icon-color: rgb(47,186,229);
+                      border-radius: 10px;
+                      height: 40px;
+                    }
+                    ha-icon	 {
+                      margin-top: -7px;
+                      color: var(--accent-color) !important;
+                    }
+                    bar-card-indicator	 {
+                      margin-top: -12px;
+                      padding-right: 5px;
+                    }
+                    bar-card-name	 {
+                      margin-top: -4.5px;
+                      padding-left: 5px;
+                    }
+                    bar-card-backgroundbar	 {
+                      margin-top: -3.5px;
+                      border-radius: 10px;
+                    }
+                    bar-card-currentbar	 {
+                      margin-top: -3.5px;
+                      border-radius: 10px;
+                    }
+                    bar-card-targetbar	 {
+                      margin-top: -3.5px;
+                      border-radius: 10px;
+                    }
+                    bar-card-targetmarker	 {
+                      margin-top: -3.5px;
+                      border-radius: 10px;
+                    }
+                    bar-card-value	 {
+                      margin-top: -4.5px;
+                      padding-left: 5px;
+                    }
+                - type: custom:bar-card
+                  name: 'Disk Use - Local'
+                  entity: sensor.host_local_use
+                  color: var(--accent-color) !important;
+                  entity_row: true
+                  width: 70%
+                  animation:
+                    state: on
+                  positions:
+                    name: outside
+                    value: outside
+                    icon: outside
+                    indicator: inside
+                  height: 15px
+                  icon: mdi:harddisk
+                  style: |
+                    ha-card {
+                      --paper-item-icon-color: rgb(47,186,229);
+                      border-radius: 10px;
+                      height: 40px;
+                    }
+                    ha-icon {
+                      margin-top: -7px;
+                      color: var(--accent-color) !important;
+                    }
+                    bar-card-indicator {
+                      margin-top: -12px;
+                      padding-right: 5px;
+                    }
+                    bar-card-name {
+                      margin-top: -4.5px;
+                      padding-left: 5px;
+                    }
+                    bar-card-backgroundbar {
+                      margin-top: -3.5px;
+                      border-radius: 10px;
+                    }
+                    bar-card-currentbar {
+                      margin-top: -3.5px;
+                      border-radius: 10px;
+                    }
+                    bar-card-targetbar {
+                      margin-top: -3.5px;
+                      border-radius: 10px;
+                    }
+                    bar-card-targetmarker {
+                      margin-top: -3.5px;
+                      border-radius: 10px;
+                    }
+                    bar-card-value	 {
+                      margin-top: -4.5px;
+                      padding-left: 5px;
+                    }
+
+                # - type: custom:bar-card
+                #   name: 'Disk Use - Backup'
+                #   entity: sensor.host_backup_use
+                #   color: var(--accent-color) !important;
+                #   entity_row: true
+                #   width: 70%
+                #   animation:
+                #     state: on
+                #   positions:
+                #     name: outside
+                #     value: outside
+                #     icon: outside
+                #     indicator: inside
+                #   height: 15px
+                #   icon: mdi:harddisk
+                #   style: |
+                #     ha-card {
+                #       --paper-item-icon-color: rgb(47,186,229);
+                #       border-radius: 10px;
+                #       height: 40px;
+                #     }
+                #     ha-icon {
+                #       margin-top: -7px;
+                #       color: var(--accent-color) !important;
+                #     }
+                #     bar-card-indicator {
+                #       margin-top: -12px;
+                #       padding-right: 5px;
+                #     }
+                #     bar-card-name {
+                #       margin-top: -4.5px;
+                #       padding-left: 5px;
+                #     }
+                #     bar-card-backgroundbar {
+                #       margin-top: -3.5px;
+                #       border-radius: 10px;
+                #     }
+                #     bar-card-currentbar {
+                #       margin-top: -3.5px;
+                #       border-radius: 10px;
+                #     }
+                #     bar-card-targetbar {
+                #       margin-top: -3.5px;
+                #       border-radius: 10px;
+                #     }
+                #     bar-card-targetmarker {
+                #       margin-top: -3.5px;
+                #       border-radius: 10px;
+                #     }
+                #     bar-card-value	 {
+                #       margin-top: -4.5px;
+                #       padding-left: 5px;
+                #     }
+
+                - entity: sensor.host_started
+                  name: 'Restarted'
+                  icon: mdi:clock
+                  style: |
+                    ha-card {
+                      --paper-item-icon-color: rgb(47,186,229);
+                      border-radius: 10px;
+                      height: 40px;
+                    }
+                    state-badge {
+                      margin-top: -7px;
+                      color: var(--accent-color) !important;
+                      padding-right: 5px;
+                    }
+                  
+- type: custom:dwains-flexbox-card
+  items_classes: 'col-xs-12 col-sm-3 col-sm-3 col-xl-3'
+  padding: true
+  cards:
+    # - type: vertical-stack
+    #   cards:
+        - type: entities
+          title: DEV-HASSIO (HassOS)
+          style: |
+            ha-card {
+              border-radius: 10px;
+              padding-bottom: 10px;
+              background-color: var(--ha-card-background);
+              font-family: var(--primary-font-family);
+              box-shadow: none !important;
+            }
+            :host {
+              --paper-item-icon-color: var(--accent-color) !important;
+            }
+            ha-icon {
+              margin-top: -7px;
+              color: var(--accent-color) !important;
+              padding-right: 5px;
+            }
+            .card-header {
+              padding: 5px 16px;
+              font-size: 18px;
+              font-weight: 700 !important;
+            }
+            .card-content div {
+                margin: 0 !important;
+            }
+            #states {
+              padding-top: 0px !important;
+              padding-bottom: 2px !important;
+            }
+            .secondary {
+              color: darkgray !important;
+              margin-left: 2px !important;
+            }
+          entities:
+            - entity: sensor.dev_cpu_use
+              name: CPU use
+              icon: mdi:cpu-64-bit
+            - entity: sensor.dev_ram_use
+              name: Memory use
+            # - entity: sensor.disk_use_percent_local
+            #   name: Disk use
+            - entity: sensor.dev_status
+              name: Status
+            - entity: sensor.dev_started
+              name: Restarted
+              icon: mdi:clock
+
+    # - type: vertical-stack
+    #   cards:
+        - type: entities
+          title: HASSIO (HassOS)
+          style: |
+            ha-card {
+              border-radius: 10px;
+              padding-bottom: 10px;
+              background-color: var(--ha-card-background);
+              font-family: var(--primary-font-family);
+              box-shadow: none !important;
+            }
+            :host {
+              --paper-item-icon-color: var(--accent-color) !important;
+            }
+            ha-icon {
+              margin-top: -7px;
+              color: var(--accent-color) !important;
+              padding-right: 5px;
+            }
+            .card-header {
+              padding: 5px 16px;
+              font-size: 18px;
+              font-weight: 700 !important;
+            }
+            .card-content div {
+                margin: 0 !important;
+            }
+            #states {
+              padding-top: 0px !important;
+              padding-bottom: 0px !important;
+            }
+            .secondary {
+              color: darkgray !important;
+              margin-left: 2px !important;
+            }
+          entities:
+            - entity: sensor.hassio_cpu_use
+              name: CPU use
+              icon: mdi:cpu-64-bit
+            - entity: sensor.hassio_ram_use
+              name: Memory use
+            # - entity: sensor.disk_use_percent
+            #   name: Disk use
+            - entity: sensor.hassio_status
+              name: Status
+            - entity: sensor.uptime
+              name: Restarted
+              icon: mdi:clock
+
+            # - entity: sensor.docker_container_name_up_time
+            #   name: Uptime
+    # - type: vertical-stack
+    #   cards:
+        - type: entities
+          title: Rancher (RancherOS)
+          style: |
+            ha-card {
+              border-radius: 10px;
+              padding-bottom: 10px;
+              background-color: var(--ha-card-background);
+              font-family: var(--primary-font-family);
+              box-shadow: none !important;
+            }
+            :host {
+              --paper-item-icon-color: var(--accent-color) !important;
+            }
+            ha-icon {
+              margin-top: -7px;
+              color: var(--accent-color) !important;
+              padding-right: 5px;
+            }
+            .card-header {
+              padding: 5px 16px;
+              font-size: 18px;
+              font-weight: 700 !important;
+            }
+            .card-content div {
+                margin: 0 !important;
+            }
+            #states {
+              padding-top: 0px !important;
+              padding-bottom: 2px !important;
+            }
+            .secondary {
+              color: darkgray !important;
+              margin-left: 2px !important;
+            }
+          entities:
+            - entity: sensor.rancher_cpu_use
+              name: CPU use
+              icon: mdi:cpu-64-bit
+            - entity: sensor.rancher_ram_use
+              name: Memory use
+            # - entity: sensor.disk_use_percent_local
+            #   name: Disk use
+            - entity: sensor.rancher_status
+              name: Status
+            - entity: sensor.rancher_started
+              name: Restarted
+              icon: mdi:clock
+
+    # - type: vertical-stack
+    #   cards:
+        - type: entities
+          title: SERVER (Server 2019)
+          style: |
+            ha-card {
+              border-radius: 10px;
+              padding-bottom: 10px;
+              background-color: var(--ha-card-background);
+              font-family: var(--primary-font-family);
+              box-shadow: none !important;
+            }
+            :host {
+              --paper-item-icon-color: var(--accent-color) !important;
+            }
+            ha-icon {
+              margin-top: -7px;
+              color: var(--accent-color) !important;
+              padding-right: 5px;
+            }
+            .card-header {
+              padding: 5px 16px;
+              font-size: 18px;
+              font-weight: 700 !important;
+            }
+            .card-content div {
+                margin: 0 !important;
+            }
+            #states {
+              padding-top: 0px !important;
+              padding-bottom: 0px !important;
+            }
+            .secondary {
+              color: darkgray !important;
+              margin-left: 2px !important;
+            }
+          entities:
+            - entity: sensor.services_cpu_use
+              name: CPU use
+              icon: mdi:cpu-64-bit
+            - entity: sensor.services_ram_use
+              name: Memory use
+              icon: mdi:memory
+            # - entity: sensor.server_storage_c_usage
+            #   name: Disk use
+              # icon: mdi:harddisk
+            - entity: sensor.services_status
+              name: Status
+            - entity: sensor.services_started
+              name: Restarted
+              icon: mdi:clock
