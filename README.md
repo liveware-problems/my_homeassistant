@@ -1,3 +1,3 @@
-# my_homeassistant
+# my homeassistant
 
 Holding pen for my HA config files, in a mostly disorganised fashion...
