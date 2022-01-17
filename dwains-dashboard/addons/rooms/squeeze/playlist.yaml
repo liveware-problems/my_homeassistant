@@ -1,0 +1,289 @@
+# dwains_theme
+type: custom:swipe-card
+cards:
+  - type: conditional
+    conditions: 
+      - entity: {{ player }}
+        state: playing
+    card:
+        type: custom:button-card
+        hold_action:
+          action: call-service
+          service: shell_command.kitchen_sonos
+        entity: {{ player }}
+        show_label: true
+        show_state: false
+        show_icon: false
+        show_name: false
+        label: >
+          [[[
+            if(entity.state == 'playing') {
+              if ('media_artist' in entity.attributes) {
+                return ('<h1><b>' + entity.attributes.media_title + ' </b></h1><h2> ' + entity.attributes.media_artist + ' </h2>');
+              } else {
+                return ('<h1><b>' + entity.attributes.media_title + '</b></h1>');
+              }
+            }
+          ]]]
+        styles:
+          label:
+            - text-overflow: unset
+            - white-space: unset
+            - word-break: break-word
+            - font-size: 18px
+            - line-height: 40px
+            - text-align: center
+            - overflow-wrap: normal
+        style: |
+          ha-card {
+            background: none;
+            box-shadow: none;
+            font-size: 18px;
+            font-family: 'Raleway';
+            line-height: 40px;
+            text-align: center;
+            padding-top: -10px !important;
+            padding-bottom: 0px !important;
+          } 
+
+  - type: 'custom:sonos-playlist-card'
+    name: Spotify
+    player: {{ player }}
+    limit: 8
+    gridWidth: 20
+    style: |
+        ha-card {
+          border-radius: 5px;
+          background-color: var(--dwains-theme-primary);
+          --paper-slider-knob-color: var(--dwains-theme-names);
+          --paper-slider-active-color: var(--dwains-theme-names);
+          --paper-slider-knob-start-color: var(--dwains-theme-grey);
+          --paper-slider-container-color: var(--dwains-theme-grey);
+        }
+
+  - type: 'custom:sonos-playlist-card'
+    name: Spotify
+    player: {{ player }}
+    playlist_type: discover-weekly
+    limit: 8
+    gridWidth: 20
+    style: |
+        ha-card {
+          border-radius: 5px;
+          background-color: var(--dwains-theme-primary);
+          --paper-slider-knob-color: var(--dwains-theme-names);
+          --paper-slider-active-color: var(--dwains-theme-names);
+          --paper-slider-knob-start-color: var(--dwains-theme-grey);
+          --paper-slider-container-color: var(--dwains-theme-grey);
+        }
+
+  - type: 'custom:sonos-playlist-card'
+    name: Spotify
+    player: {{ player }}
+    playlist_type: featured
+    limit: 8
+    gridWidth: 20
+    style: |
+        ha-card {
+          border-radius: 5px;
+          background-color: var(--dwains-theme-primary);
+          --paper-slider-knob-color: var(--dwains-theme-names);
+          --paper-slider-active-color: var(--dwains-theme-names);
+          --paper-slider-knob-start-color: var(--dwains-theme-grey);
+          --paper-slider-container-color: var(--dwains-theme-grey);
+        }
+  - type: custom:dwains-flexbox-card
+    cards:
+        - type: custom:dwains-flexbox-card
+          items_classes: 'col-xs-6 col-sm-3 col-md-3 col-lg-3'
+          columns: 4
+          square: true
+          padding: true
+          cards:
+                - entity_picture: 'https://i.scdn.co/image/ab67706f00000003aea4ebb6ef45ad6edefeb400'
+                  show_entity_picture: true
+                  styles:
+                    card:
+                      - '--mdc-ripple-color': var(--switch-checked-button-color)
+                      - '--mdc-ripple-press-opacity': 0.5
+                    entity_picture:
+                      - width: 100%
+                    grid:
+                      - margin: '-10px'
+
+                  tap_action:
+                    action: call-service
+                    service: script.1594217612531
+                    service_data:
+                      media_content_id: 'spotify:playlist:37i9dQZF1DWSrVdvTl1tVY'
+                      media_content_type: playlist
+                  type: 'custom:button-card'
+
+                - entity_picture: 'https://i.scdn.co/image/ab67706f00000003c0a7706bdf84dae9a756b8ba'
+                  show_entity_picture: true
+                  styles:
+                    card:
+                      - '--mdc-ripple-color': var(--switch-checked-button-color)
+                      - '--mdc-ripple-press-opacity': 0.5
+                    entity_picture:
+                      - width: 100%
+                    grid:
+                      - margin: '-15px'
+
+                  tap_action:
+                    action: call-service
+                    service: script.1594217612531
+                    service_data:
+                      media_content_id: 'spotify:playlist:37i9dQZF1DWSrVdvTl1tVY'
+                      media_content_type: playlist
+                  type: 'custom:button-card'
+
+                - entity_picture: 'https://i.scdn.co/image/ab67706f000000022035dd6c9268b001a79f7866'
+                  show_entity_picture: true
+                  styles:
+                    card:
+                      - '--mdc-ripple-color': var(--switch-checked-button-color)
+                      - '--mdc-ripple-press-opacity': 0.5
+                    entity_picture:
+                      - width: 100%
+                    grid:
+                      - margin: '-15px'
+
+                  tap_action:
+                    action: call-service
+                    service: script.1594217612531
+                    service_data:
+                      media_content_id: 'spotify:playlist:37i9dQZF1DWSrVdvTl1tVY'
+                      media_content_type: playlist
+                  type: 'custom:button-card'
+
+                - entity_picture: 'https://i.scdn.co/image/ab67706f000000024cf851c6451d33904f979a77'
+                  show_entity_picture: true
+                  styles:
+                    card:
+                      - '--mdc-ripple-color': var(--switch-checked-button-color)
+                      - '--mdc-ripple-press-opacity': 0.5
+                    entity_picture:
+                      - width: 100%
+                    grid:
+                      - margin: '-15px'
+
+                  tap_action:
+                    action: call-service
+                    service: script.1594217612531
+                    service_data:
+                      media_content_id: 'spotify:playlist:37i9dQZF1DWSrVdvTl1tVY'
+                      media_content_type: playlist
+                  type: 'custom:button-card'
+
+## attempt 2 rows
+                ## Dance Radio UK
+                - entity_picture: 'https://danceradiouk.com/players/dance/img/RadioIcon.gif'
+                  show_entity_picture: true
+                  styles:
+                    card:
+                      - '--mdc-ripple-color': var(--switch-checked-button-color)
+                      - '--mdc-ripple-press-opacity': 0.5
+                    entity_picture:
+                      - width: 100%
+                    grid:
+                      - margin: '-10px'
+
+                  tap_action:
+                    action: call-service
+                    service: {% if player.split('.')[1] == 'pod' or player.split('.')[1] == 'bedroom' %}
+                              media_player.play_media
+                            {% else %}
+                              media_player.select_source
+                            {% endif %}
+                    service_data:
+                            {% if player.split('.')[1] == 'pod' or player.split('.')[1] == 'bedroom' %}
+                            entity_id: {{ player }}
+                            media_content_id: 'http://opml.radiotime.com/Tune.ashx?id=s143250'
+                            media_content_type: music
+                            {% else %}
+                            entity_id: {{ player }}
+                            source: Dance Uk at danceradiouk
+                            {% endif %}                
+                  type: 'custom:button-card'
+
+                ## Forth 1
+                - entity_picture: 'data:image/jpeg;base64,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'
+                  show_entity_picture: true
+                  styles:
+                    card:
+                      - '--mdc-ripple-color': var(--switch-checked-button-color)
+                      - '--mdc-ripple-press-opacity': 0.5
+                    entity_picture:
+                      - width: 100%
+                    grid:
+                      - margin: '-10px'
+
+                  tap_action:
+                    action: call-service
+                    service: {% if player.split('.')[1] == 'pod' or player.split('.')[1] == 'bedroom' %}
+                              media_player.play_media
+                            {% else %}
+                              media_player.select_source
+                            {% endif %}
+                    service_data:
+                            {% if player.split('.')[1] == 'pod' or player.split('.')[1] == 'bedroom' %}
+                            entity_id: {{ player }}
+                            media_content_id: 'http://opml.radiotime.com/Tune.ashx?id=s6954&formats=aac,ogg,mp3&partnerId=16&serial=af9f12018147c9665cec7e24473f0931'
+                            media_content_type: music
+                            {% else %}
+                            entity_id: {{ player }}
+                            source: Forth 1
+                            {% endif %} 
+                  type: 'custom:button-card'
+
+                ## Box UK
+                - entity_picture: 'https://newjams-images.scdn.co/v3/release-radar/3fa66851761354ff1900b9a41f57c9a748bfa780/en/large'
+                  show_entity_picture: true
+                  styles:
+                    card:
+                      - '--mdc-ripple-color': var(--switch-checked-button-color)
+                      - '--mdc-ripple-press-opacity': 0.5
+                    entity_picture:
+                      - width: 100%
+                    grid:
+                      - margin: '-10px'
+
+                  tap_action:
+                    action: call-service
+                    service: media_player.play_media
+                    service_data:
+                      entity_id: {{ player }}
+                      media_content_id: 'spotify:playlist:37i9dQZEVXbrRTAOycVNCr'
+                      media_content_type: music
+                  type: 'custom:button-card'
+
+                ## Radio 1
+                - entity_picture: 'https://cdn-radiotime-logos.tunein.com/s24939g.png' #'data:image/png;base64,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'
+                  show_entity_picture: true
+                  styles:
+                    card:
+                      - '--mdc-ripple-color': var(--switch-checked-button-color)
+                      - '--mdc-ripple-press-opacity': 0.5
+                    entity_picture:
+                      - width: 100%
+                    grid:
+                      - margin: '-10px'
+
+                  tap_action:
+                    action: call-service
+                    service: {% if player.split('.')[1] == 'pod' or player.split('.')[1] == 'bedroom' %}
+                              media_player.play_media
+                            {% else %}
+                              media_player.select_source
+                            {% endif %}
+                    service_data:
+                            {% if player.split('.')[1] == 'pod' or player.split('.')[1] == 'bedroom' %}
+                            entity_id: {{ player }}
+                            media_content_id: 'http://opml.radiotime.com/Tune.ashx?id=s24939&formats=aac,ogg,mp3&partnerId=16&serial=4d12da829a31473850745d554bbb8879'
+                            media_content_type: music
+                            {% else %}
+                            entity_id: {{ player }}
+                            source: BBC Radio 1
+                            {% endif %}
+                  type: 'custom:button-card'
