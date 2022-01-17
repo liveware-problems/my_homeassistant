@@ -1,0 +1,120 @@
+# dwains_theme
+## Room add-on: Sonos
+## Created by Jeroen Klompen
+## Version: 1.0.2
+
+- type: custom:dwains-flexbox-card
+  # items_classes: 'col-xs-12 col-sm-5'
+  padding: true
+  cards:
+    - type: entities
+      item_classes: 'col-xs-12 col-sm-5 d-block'
+      style: |
+        ha-card {
+          border-radius: 5px;
+          background-color: var(--dwains-theme-primary);
+          --paper-slider-knob-color: var(--dwains-theme-names);
+          --paper-slider-active-color: var(--dwains-theme-names);
+          --paper-slider-knob-start-color: var(--dwains-theme-grey);
+          --paper-slider-container-color: var(--dwains-theme-grey);
+        }
+      entities:
+        - entity: {{ (data | fromjson)['entity'] }}
+          group: true
+          # name: Sonos
+          info: scroll
+          artwork: full-cover-fit
+          type: 'custom:mini-media-player'
+          hide:
+            power: true
+            icon: true
+            source: true
+            icon_state: true
+            power_color: true
+            volume: true
+            controls: true
+
+          speaker_group:
+            platform: sonos
+            show_group_count: true
+            entities:
+              - entity_id: media_player.kitchen
+                name: 'Kitchen'
+              - entity_id: media_player.family_room
+                name: 'Family Room'
+              - entity_id: media_player.dining_room
+                name: 'Dining Room'
+              - entity_id: media_player.patio
+                name: 'Garden'
+
+
+    - type: entities
+      item_classes: 'col-xs-12 col-sm-7 d-block'
+      style: |
+        ha-card {
+          border-radius: 5px;
+          background-color: var(--dwains-theme-primary);
+        }
+      entities:
+        - type: custom:fold-entity-row
+          head:
+            type: 'custom:mini-media-player'
+            # style: |
+            #   ha-card div.entity__info {
+            #       height: 50px !important;
+            #   }                    
+            #   ha-card div.entity__info__media {
+            #       font-size: 1.5rem;
+            #       height: 45px !important;
+            #   }            
+            entity: {{ (data | fromjson)['entity'] }}
+            group: true
+            # name: Sonos
+            info: scroll
+            # artwork: full-cover
+            hide:
+              power: true
+              icon: true
+              source: true
+              icon_state: false
+              power_color: false
+              volume: false
+              shuffle: false
+              progress: true
+              info: true
+
+            speaker_group:
+              platform: sonos
+              show_group_count: true
+              entities:
+                - entity_id: media_player.kitchen
+                  name: 'Kitchen'
+                - entity_id: media_player.family_room
+                  name: 'Family Room'
+                - entity_id: media_player.dining_room
+                  name: 'Dining Room'
+                - entity_id: media_player.patio
+                  name: 'Garden'
+
+          entities:
+            - type: 'custom:slider-entity-row'
+              entity: media_player.kitchen
+              icon: 'mdi:speaker'
+              name: 'Kitchen'
+            - type: 'custom:slider-entity-row'
+              entity: media_player.family_room
+              icon: 'mdi:speaker'
+              name: 'Family Room'
+            - type: 'custom:slider-entity-row'
+              entity: media_player.dining_room
+              icon: 'mdi:speaker'
+              name: 'Dining Room'
+            - type: 'custom:slider-entity-row'
+              entity: media_player.patio
+              icon: 'mdi:speaker'
+              name: 'Garden'
+
+
+        - !include
+          - ../squeeze/playlist.yaml
+          - player: {{ (data | fromjson)['entity'] }}
