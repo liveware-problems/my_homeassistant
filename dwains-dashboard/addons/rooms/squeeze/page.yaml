@@ -1,0 +1,97 @@
+# dwains_theme
+## Room add-on: Squeeze
+## Created by Scott Wishart
+## Version: 1.0.1
+
+
+    - type: custom:dwains-flexbox-card
+      cards:
+        # - type: custom:dwains-flexbox-card
+        #   items_classes: 'col-xs-12 col-sm-6 col-md-6 col-lg-6'
+        #   cards:
+            - type: entities
+              item_classes: 'col-xs-12 col-sm-5 d-block'
+              style: |
+                ha-card {
+                  border-radius: 5px;
+                  background-color: var(--dwains-theme-primary);
+                  --paper-slider-knob-color: var(--dwains-theme-names);
+                  --paper-slider-active-color: var(--dwains-theme-names);
+                  --paper-slider-knob-start-color: var(--dwains-theme-grey);
+                  --paper-slider-container-color: var(--dwains-theme-grey);
+                }
+              entities:
+                - entity: {{ (data | fromjson)['entity'] }}
+                  group: true
+                  info: scroll
+                  artwork: full-cover-fit
+                  type: 'custom:mini-media-player'
+                  hide:
+                    power: true
+                    icon: true
+                    source: true
+                    icon_state: false
+                    power_color: false
+                    volume: true
+                    controls: true
+                  
+
+            - type: entities
+              item_classes: 'col-xs-12 col-sm-7'
+              style: |
+                ha-card {
+                  border-radius: 5px;
+                  background-color: var(--dwains-theme-primary);
+                  --paper-slider-knob-color: var(--dwains-theme-names);
+                  --paper-slider-active-color: var(--dwains-theme-names);
+                  --paper-slider-knob-start-color: var(--dwains-theme-grey);
+                  --paper-slider-container-color: var(--dwains-theme-grey);
+                }
+              entities:
+                - entity: {{ (data | fromjson)['entity'] }}
+                  group: true
+                  info: scroll
+                  # artwork: full-cover-fit
+                  type: 'custom:mini-media-player'
+                  # style: |
+                  #   ha-card div.entity__info {
+                  #       height: 50px !important;
+                  #   }                    
+                  #   ha-card div.entity__info__media {
+                  #       font-size: 1.5rem;
+                  #       height: 45px !important;
+                  #   }                  
+                  hide:
+                    power: false
+                    icon: true
+                    source: true
+                    icon_state: true
+                    power_color: true
+                    volume: false
+                    shuffle: true
+                    progress: true
+                    info: true
+                  
+                  shortcuts:
+                    columns: 2
+                    hide_when_off: false
+                    label: Shuffle
+                    align_text: center
+                    buttons:
+                      - name: Shuffle On
+                        type: service
+                        id: media_player.shuffle_set
+                        data:
+                          entity_id: {{ (data | fromjson)['entity'] }}
+                          shuffle: true
+                      - name: Shuffle Off
+                        type: service
+                        id: media_player.shuffle_set
+                        data:
+                          entity_id: {{ (data | fromjson)['entity'] }}
+                          shuffle: false
+
+                - !include 
+                  - ./playlist.yaml
+                  - player: {{ (data | fromjson)['entity'] }}
+
